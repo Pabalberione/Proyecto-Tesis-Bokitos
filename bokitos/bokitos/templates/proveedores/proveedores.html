@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Pagina proveedores</h1>
-    <form action = "" method="post">
+    <form action = "{% url 'agregar_proveedor' %}" method="post">
       {% csrf_token %}
       <button  type="submit" class="btn btn-secondary">Agregar Proveedor</button>
     </form>

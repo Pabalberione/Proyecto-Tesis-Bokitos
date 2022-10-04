@@ -14,7 +14,17 @@ def proveedores(request):
 #def delete_proveedor(request, proveedor_id): #Se le agrega un ID porque para eliminar el registro hay que saber cual es el registro que se quiere eliminar 
     #print(proveedor_id)
 
-def añadir(request):
+def proveedor_agregado(request):
+    if request.POST:
+        form = añadirProveedor(request.POST, request.FILES)
+        print(request.FILES)
+        if form.is_valid():
+            form.save()
+        return render(request, 'proveedores/proveedor_agregado.html')
+
+    return render(request, 'proveedores/agregar_proveedor.html', {'form':form})
+
+def agregar_proveedor(request):
     form = añadirProveedor(request.POST, request.FILES)
     print(request.FILES)
-    return render(request, 'proveedores/añadir_proveedor.html', {'form':form})
+    return render(request, 'proveedores/agregar_proveedor.html', {'form':form})

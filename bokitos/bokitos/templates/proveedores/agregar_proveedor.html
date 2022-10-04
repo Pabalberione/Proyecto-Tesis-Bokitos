@@ -1,6 +1,6 @@
 {% extends 'home/base.html' %}
 {%block content%}
-    <form method="post" action="{% url 'proveedores' %}" enctype="multipart/form-data">
+    <form method="post" action="{% url 'proveedor_agregado' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button>Guardar</button>
