@@ -1,0 +1,38 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+    <h1>Pagina proveedores</h1>
+    <form action = "" method="post">
+      {% csrf_token %}
+      <button  type="submit" class="btn btn-secondary">Agregar Proveedor</button>
+    </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Email</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for proveedores in proveedores %}
+          <tr>
+            <td>{{proveedores.nombre}}</td>
+            <td>{{proveedores.direccion}}</td>
+            <td>{{proveedores.ciudad}}</td>
+            <td>{{proveedores.telefono}}</td>
+            <td>{{proveedores.email}}</td>
+            <td>
+              <button type="button" class="btn btn-primary">Editar</button>
+                <button type="button" class="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+    
+{% endblock content %}
