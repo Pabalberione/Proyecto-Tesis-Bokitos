@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 # Create your views here.
 from .forms import añadirProveedor
 from .models import proveedor
@@ -25,6 +25,31 @@ def proveedor_agregado(request):
     return render(request, 'proveedores/agregar_proveedor.html', {'form':form})
 
 def agregar_proveedor(request):
-    form = añadirProveedor(request.POST, request.FILES)
-    print(request.FILES)
+    form = añadirProveedor
     return render(request, 'proveedores/agregar_proveedor.html', {'form':form})
+
+
+def eliminar_proveedor(request, id):
+    proveedor1 = proveedor.objects.get(pk=id)
+    proveedor1.delete()
+    return render(request, 'proveedores/')
+
+
+#--------------------------------------------------CODIGO VIEJO  -------------------------------------------------------------------------------------------------------
+
+#FUNCION AGREGAR PROVEEDOR VIEJA
+# def agregar_proveedor(request):
+#     form = añadirProveedor(request.POST, request.FILES)
+#     print(request.FILES)
+#     return render(request, 'proveedores/agregar_proveedor.html', {'form':form})
+
+#CODIGO HTML AGREGADO PARA EL FORMULARIO AGREGAR PROVEEDOR
+# <!-- {%block content%}
+#     <form method="post" action="{% url 'proveedor_agregado' %}" enctype="multipart/form-data">
+#         {% csrf_token %}
+#         {{ form.as_p }} 
+#         <button>Guardar</button>
+#     </form>
+        
+            
+# {%endblock%} -->
