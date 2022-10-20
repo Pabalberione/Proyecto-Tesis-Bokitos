@@ -1,8 +1,8 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 # Create your views here.
 from .forms import añadirProveedor
 from .models import proveedor
-
 
 # class PruebaView(TemplateView):
 #     template_name = 'proveedores/proveedores.html'
@@ -11,9 +11,8 @@ def proveedores(request):
     proveedores = proveedor.objects.all()
     return render(request, 'proveedores/proveedores.html', {'proveedores':proveedores})
 
-#def delete_proveedor(request, proveedor_id): #Se le agrega un ID porque para eliminar el registro hay que saber cual es el registro que se quiere eliminar 
-    #print(proveedor_id)
 
+#---AGREGAR PROVEEDOR---
 def proveedor_agregado(request):
     if request.POST:
         form = añadirProveedor(request.POST, request.FILES)
@@ -22,17 +21,20 @@ def proveedor_agregado(request):
             form.save()
         return render(request, 'proveedores/proveedor_agregado.html')
 
-    return render(request, 'proveedores/agregar_proveedor.html', {'form':form})
 
 def agregar_proveedor(request):
     form = añadirProveedor
     return render(request, 'proveedores/agregar_proveedor.html', {'form':form})
 
 
-def eliminar_proveedor(request, id):
-    proveedor1 = proveedor.objects.get(pk=id)
+
+#---ELIMINAR PROVEEDOR---
+def eliminar_proveedor(request, pk):
+    proveedores = proveedor.objects.all()
+    proveedor1 = proveedor.objects.get(id=pk)
     proveedor1.delete()
-    return render(request, 'proveedores/')
+    return render(request, 'proveedores/proveedores.html', {'proveedores':proveedores})
+
 
 
 #--------------------------------------------------CODIGO VIEJO  -------------------------------------------------------------------------------------------------------
@@ -53,3 +55,10 @@ def eliminar_proveedor(request, id):
         
             
 # {%endblock%} -->
+
+
+#----ELIMINAR PROVEEDOR---
+# class ProveedorDeleteView(DeleteView):
+#     model = proveedor
+#     template_name = "proveedores/eliminar_proveedor.html"
+#     success_url = reverse_lazy('proveedor_eliminado.html')

@@ -1,4 +1,3 @@
-from pyexpat import model
 from tkinter import CASCADE
 from django.db import models
 
@@ -8,7 +7,7 @@ class producto(models.Model):
     precio = models.DecimalField(max_digits=6, decimal_places=2)
     imagen = models.ImageField(upload_to="imagenes", max_length=100)
     def __str__(self):
-        return self.descripcion
+        return self.descripcion + ' $' + str(self.precio)
 
 class stock(models.Model):
     producto_id = models.ForeignKey('producto', on_delete=models.CASCADE)

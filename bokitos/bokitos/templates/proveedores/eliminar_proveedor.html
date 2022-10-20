@@ -1,5 +1,21 @@
 {% extends 'home/base.html' %}
 {%block content%}
-<h1>Pantalla eliminar proveedor</h1>        
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">
+
+        </h1>
+        <div class="cell">
+            <form class="grid-x grid-margin-x" method="POST">{% csrf_token %}
+                <div class="callout secondary">
+                    <label>
+                        <h5>Desea eliminar el proveedor {{ proveedor.nombre }} </h5>
+                        <a type="submit" href="success_url" class="alert button">Confirmar</a>
+                    </label>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>       
             
-{%endblock%}
+{% endblock content %}

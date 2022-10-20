@@ -1,0 +1,13 @@
+.banner img{
+    width: 100%;
+    height: 778px;
+    position: relative;
+}
+
+.banner-text{
+    width: 100%;
+    color: white;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+}

@@ -12,6 +12,7 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
   </head>
   <body>
     <!--*******NAVBAR*******-->
@@ -31,7 +32,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
-            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+            <a class="nav-link" href="/home">Home</a>
             <a class="nav-link" href="/nosotros">Nosotros</a>
             <a class="nav-link" href="/productos">Productos</a>
             <a class="nav-link" href="/proveedores">Proveedores</a>
@@ -46,9 +47,6 @@
     <!--*******Contenido de las otras paginas*******-->
 
     {% block content %} {% endblock content %}
-
-
-
 
     <!--*******FOOTER*******-->
     <!-- Footer -->
