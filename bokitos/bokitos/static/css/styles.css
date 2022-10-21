@@ -6,8 +6,9 @@
 
 .banner-text{
     width: 100%;
-    color: white;
     position: absolute;
+    color: black;
     top: 50%;
     text-align: center;
+
 }
